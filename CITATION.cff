@@ -1,0 +1,11 @@
+cff-version: 1.2.0
+message: "If you use this code, please cite it as below."
+title: "Few-shot defect detection benchmark: code for a PLOS One registered report protocol"
+authors:
+  - family-names: Anugonda
+    given-names: Snehaseel Naidu
+    orcid: "https://orcid.org/0009-0002-4973-6564"
+    affiliation: "Alo Yoga"
+version: 1.0.0
+date-released: 2026-09-27
+license: MIT

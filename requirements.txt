@@ -1,0 +1,11 @@
+torch>=2.2
+torchvision>=0.17
+anomalib==2.1.0
+open_clip_torch>=2.24
+numpy
+scipy
+scikit-learn
+pandas
+matplotlib
+tabulate
+pillow
