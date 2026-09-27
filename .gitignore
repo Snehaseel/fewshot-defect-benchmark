@@ -1,1 +1,6 @@
-
+__pycache__/
+*.pyc
+outputs/
+smoke*/
+data/
+*.npz
