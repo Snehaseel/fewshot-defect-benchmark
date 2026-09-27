@@ -408,6 +408,9 @@ class WinCLIP(Method):
 
 
 # ---------------------------------------------------------------- registry
+SIMCLR_STEPS = 500  # the value used in the study; run.py --smoke lowers it only for the smoke test
+
+
 def build(method: str, class_name: str, seed: int):
     if method == "patchcore":
         return PatchCore("wrn50", seed=seed)
@@ -417,7 +420,7 @@ def build(method: str, class_name: str, seed: int):
         return PaDiM(seed=0)          # fixed dimension subset, as in the original method
     if method.startswith("simclr_"):
         _, init, aug = method.split("_")
-        return SimCLR(pretrained=(init == "finetune"), augment=aug, seed=seed)
+        return SimCLR(pretrained=(init == "finetune"), augment=aug, steps=SIMCLR_STEPS, seed=seed)
     if method == "winclip":
         return WinCLIP(class_name)
     raise ValueError(method)
