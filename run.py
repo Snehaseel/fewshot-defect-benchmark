@@ -118,6 +118,22 @@ def run(args) -> None:
         print(f"\n== {args.dataset}/{cat}: {len(cd.train_paths)} train, {len(cd.test_paths)} test "
               f"({cd.test_labels.sum()} defective) loaded in {time.time() - t0:.0f}s", flush=True)
         for mname in method_names:
+            try:
+                run_method(args, cd, mname, ks, finished, logged_subsets, results, subsets_csv, scores_dir)
+            except Exception as e:  # keep going so one broken method does not hide the others
+                import traceback
+                tb = traceback.format_exc()
+                print(f"  !! {mname} FAILED on {cat}: {type(e).__name__}: {e}", flush=True)
+                append(str(out_dir / "errors.csv"), {"dataset": args.dataset, "category": cat,
+                       "method": mname, "error": f"{type(e).__name__}: {e}", "traceback": tb},
+                       ["dataset", "category", "method", "error", "traceback"])
+        del cd
+
+
+def run_method(args, cd, mname, ks, finished, logged_subsets, results, subsets_csv, scores_dir):
+    cat = cd.category
+    if True:
+        if True:
             method = None
             for k in ks:
                 n_subsets = 1 if k in ("0", "full") else args.subsets
@@ -176,7 +192,6 @@ def run(args) -> None:
                     print(f"  {mname:26s} k={k:>4s} s={s}  AUROC={m['image_auroc']:.3f}  "
                           f"pixAUROC={m['pixel_auroc']:.3f}  rec@5%={m['recall_oracle_5fpr']:.2f}  "
                           f"fit={fit_s:.1f}s", flush=True)
-        del cd
 
 
 def main(argv=None):
