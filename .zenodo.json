@@ -1,0 +1,8 @@
+{
+  "title": "Few-shot defect detection benchmark: code for a PLOS One registered report protocol",
+  "upload_type": "software",
+  "description": "Experiment and analysis code deposited before any benchmark result was generated, for the registered report protocol 'How many normal images are needed? Label efficiency of contrastive self-supervised, pretrained-feature and vision-language methods for visual defect detection'.",
+  "creators": [{"name": "Anugonda, Snehaseel Naidu", "affiliation": "Alo Yoga", "orcid": "0009-0002-4973-6564"}],
+  "license": "MIT",
+  "keywords": ["anomaly detection", "few-shot learning", "self-supervised learning", "registered report", "MVTec AD", "VisA"]
+}
